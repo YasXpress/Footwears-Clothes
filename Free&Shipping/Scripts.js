@@ -1417,7 +1417,7 @@ document.querySelector('.ADD_PD_MC_IPI').addEventListener('change', (e) => {
   const FPC_CD = document.querySelector('.FPC_CD');
   const FPC_TX = document.querySelector('.FPC_TX');
 
-  //document.querySelector('.FPC').style.display = 'block';
+  document.querySelector('.FPC').style.display = 'block';
 
   setInterval(() => {
     
