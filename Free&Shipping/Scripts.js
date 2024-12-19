@@ -461,7 +461,7 @@ setInterval(updateUI, 100);
 
 
 // Fetch product IDs
-let productID = [];
+let productID = [{productID:"0"}];
 
 const fetchProductID = () => {
   onValue(ref(db, "productID"), (snapshot) => {
@@ -1468,7 +1468,7 @@ document.querySelector('.ADD_PD_MC_IPI').addEventListener('change', (e) => {
 
   setInterval(() => {
     
-    if (PI.length > 0 && PI[0].id !== 0) {
+    if (productID[0].productID !== "0") {
       
       if (screen.width > 1024) {
 
