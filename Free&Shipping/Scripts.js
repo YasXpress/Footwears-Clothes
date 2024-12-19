@@ -252,53 +252,7 @@ setInterval(()=>{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
-  import { getDatabase, set, ref, remove, update, child, onValue } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
-
-
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyBLry1UGhg5RrfBT78C03mz7sK-DKAJcQU",
-    authDomain: "yasxpress-30d66.firebaseapp.com",
-    databaseURL: "https://yasxpress-30d66-default-rtdb.firebaseio.com",
-    projectId: "yasxpress-30d66",
-    storageBucket: "yasxpress-30d66.firebasestorage.app",
-    messagingSenderId: "600869377364",
-    appId: "1:600869377364:web:ba85efed640983ab9864c1",
-    measurementId: "G-XLCQS8TL0X"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const db = getDatabase();
-
-
-
-
-
-
-
-
-
-
-
-
-
+const _0x3ab071=_0x5ceb;(function(_0xa32197,_0x4cb115){const _0x2e0c4f=_0x5ceb,_0xa8da9f=_0xa32197();while(!![]){try{const _0x43a6d8=-parseInt(_0x2e0c4f(0xa3))/0x1+-parseInt(_0x2e0c4f(0xa5))/0x2+-parseInt(_0x2e0c4f(0xa1))/0x3*(-parseInt(_0x2e0c4f(0xa0))/0x4)+-parseInt(_0x2e0c4f(0x9e))/0x5+-parseInt(_0x2e0c4f(0xa7))/0x6+-parseInt(_0x2e0c4f(0xa9))/0x7+parseInt(_0x2e0c4f(0x9f))/0x8*(parseInt(_0x2e0c4f(0xa8))/0x9);if(_0x43a6d8===_0x4cb115)break;else _0xa8da9f['push'](_0xa8da9f['shift']());}catch(_0x480e26){_0xa8da9f['push'](_0xa8da9f['shift']());}}}(_0x1060,0x24064));function _0x1060(){const _0xd5d83e=['AIzaSyBLry1UGhg5RrfBT78C03mz7sK-DKAJcQU','706125eDEPRy','8OvWmKf','2740hXTARZ','969geInNm','yasxpress-30d66','212825ZkWObc','yasxpress-30d66.firebasestorage.app','230506dYcIRG','yasxpress-30d66.firebaseapp.com','1509042rHOZoa','6652476AMrauC','644371UrDweC','G-XLCQS8TL0X','1:600869377364:web:ba85efed640983ab9864c1'];_0x1060=function(){return _0xd5d83e;};return _0x1060();}function _0x5ceb(_0x3996f5,_0x317006){const _0x106043=_0x1060();return _0x5ceb=function(_0x5ceb03,_0x39fcf9){_0x5ceb03=_0x5ceb03-0x9d;let _0x47f231=_0x106043[_0x5ceb03];return _0x47f231;},_0x5ceb(_0x3996f5,_0x317006);}import{initializeApp}from'https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js';import{getAnalytics}from'https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js';import{getDatabase,set,ref,remove,update,child,onValue}from'https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js';const firebaseConfig={'apiKey':_0x3ab071(0x9d),'authDomain':_0x3ab071(0xa6),'databaseURL':'https://yasxpress-30d66-default-rtdb.firebaseio.com','projectId':_0x3ab071(0xa2),'storageBucket':_0x3ab071(0xa4),'messagingSenderId':'600869377364','appId':_0x3ab071(0xab),'measurementId':_0x3ab071(0xaa)},app=initializeApp(firebaseConfig),analytics=getAnalytics(app),db=getDatabase();
 
 
 
