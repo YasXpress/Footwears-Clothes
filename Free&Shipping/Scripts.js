@@ -252,7 +252,54 @@ setInterval(()=>{
 
 
 
-const _0x249cdc=_0x18a8;function _0x18a8(_0x480b96,_0x388c66){const _0x562c3c=_0x562c();return _0x18a8=function(_0x18a844,_0xc7f693){_0x18a844=_0x18a844-0xaa;let _0xeda5a8=_0x562c3c[_0x18a844];return _0xeda5a8;},_0x18a8(_0x480b96,_0x388c66);}function _0x562c(){const _0x88d259=['518140ZsvzRA','4982085GHVzAD','2730624KRNeFl','G-XLCQS8TL0X','AIzaSyBLry1UGhg5RrfBT78C03mz7sK-DKAJcQU','1:600869377364:web:ba85efed640983ab9864c1','yasxpress-30d66.firebasestorage.app','yasxpress-30d66.firebaseapp.com','601466tSDDDa','133hjdVSO','5807528MCEljb','21649761lwQHTI','6Hxraif','208374GTdLbV','600869377364'];_0x562c=function(){return _0x88d259;};return _0x562c();}(function(_0xea6e6,_0x51f816){const _0x317850=_0x18a8,_0x5b776a=_0xea6e6();while(!![]){try{const _0x1a7f7b=-parseInt(_0x317850(0xb8))/0x1+-parseInt(_0x317850(0xb1))/0x2*(parseInt(_0x317850(0xb5))/0x3)+parseInt(_0x317850(0xb3))/0x4+-parseInt(_0x317850(0xaa))/0x5+-parseInt(_0x317850(0xb6))/0x6*(parseInt(_0x317850(0xb2))/0x7)+-parseInt(_0x317850(0xab))/0x8+parseInt(_0x317850(0xb4))/0x9;if(_0x1a7f7b===_0x51f816)break;else _0x5b776a['push'](_0x5b776a['shift']());}catch(_0x106876){_0x5b776a['push'](_0x5b776a['shift']());}}}(_0x562c,0xb4b71));import{initializeApp}from'https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js';import{getAnalytics}from'https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js';import{getDatabase,set,ref,remove,update,child,onValue}from'https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js';const firebaseConfig={'apiKey':_0x249cdc(0xad),'authDomain':_0x249cdc(0xb0),'projectId':'yasxpress-30d66','storageBucket':_0x249cdc(0xaf),'messagingSenderId':_0x249cdc(0xb7),'appId':_0x249cdc(0xae),'measurementId':_0x249cdc(0xac)},app=initializeApp(firebaseConfig),analytics=getAnalytics(app);
+
+
+
+
+
+
+
+
+
+
+
+
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+  import { getDatabase, set, ref, remove, update, child, onValue } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+
+
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBLry1UGhg5RrfBT78C03mz7sK-DKAJcQU",
+    authDomain: "yasxpress-30d66.firebaseapp.com",
+    databaseURL: "https://yasxpress-30d66-default-rtdb.firebaseio.com",
+    projectId: "yasxpress-30d66",
+    storageBucket: "yasxpress-30d66.firebasestorage.app",
+    messagingSenderId: "600869377364",
+    appId: "1:600869377364:web:ba85efed640983ab9864c1",
+    measurementId: "G-XLCQS8TL0X"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
