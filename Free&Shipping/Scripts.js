@@ -252,6 +252,44 @@ setInterval(()=>{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const _0x3ab071=_0x5ceb;(function(_0xa32197,_0x4cb115){const _0x2e0c4f=_0x5ceb,_0xa8da9f=_0xa32197();while(!![]){try{const _0x43a6d8=-parseInt(_0x2e0c4f(0xa3))/0x1+-parseInt(_0x2e0c4f(0xa5))/0x2+-parseInt(_0x2e0c4f(0xa1))/0x3*(-parseInt(_0x2e0c4f(0xa0))/0x4)+-parseInt(_0x2e0c4f(0x9e))/0x5+-parseInt(_0x2e0c4f(0xa7))/0x6+-parseInt(_0x2e0c4f(0xa9))/0x7+parseInt(_0x2e0c4f(0x9f))/0x8*(parseInt(_0x2e0c4f(0xa8))/0x9);if(_0x43a6d8===_0x4cb115)break;else _0xa8da9f['push'](_0xa8da9f['shift']());}catch(_0x480e26){_0xa8da9f['push'](_0xa8da9f['shift']());}}}(_0x1060,0x24064));function _0x1060(){const _0xd5d83e=['AIzaSyBLry1UGhg5RrfBT78C03mz7sK-DKAJcQU','706125eDEPRy','8OvWmKf','2740hXTARZ','969geInNm','yasxpress-30d66','212825ZkWObc','yasxpress-30d66.firebasestorage.app','230506dYcIRG','yasxpress-30d66.firebaseapp.com','1509042rHOZoa','6652476AMrauC','644371UrDweC','G-XLCQS8TL0X','1:600869377364:web:ba85efed640983ab9864c1'];_0x1060=function(){return _0xd5d83e;};return _0x1060();}function _0x5ceb(_0x3996f5,_0x317006){const _0x106043=_0x1060();return _0x5ceb=function(_0x5ceb03,_0x39fcf9){_0x5ceb03=_0x5ceb03-0x9d;let _0x47f231=_0x106043[_0x5ceb03];return _0x47f231;},_0x5ceb(_0x3996f5,_0x317006);}import{initializeApp}from'https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js';import{getAnalytics}from'https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js';import{getDatabase,set,ref,remove,update,child,onValue}from'https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js';const firebaseConfig={'apiKey':_0x3ab071(0x9d),'authDomain':_0x3ab071(0xa6),'databaseURL':'https://yasxpress-30d66-default-rtdb.firebaseio.com','projectId':_0x3ab071(0xa2),'storageBucket':_0x3ab071(0xa4),'messagingSenderId':'600869377364','appId':_0x3ab071(0xab),'measurementId':_0x3ab071(0xaa)},app=initializeApp(firebaseConfig),analytics=getAnalytics(app),db=getDatabase();
 
 
@@ -431,20 +469,32 @@ document.querySelector('.ADD_PD_MCB').addEventListener("click", () => {
   const productNameInput = document.querySelector('.ADD_PD_MC_PNI');
   const productPriceInput = document.querySelector('.ADD_PD_MC_PPI');
   const productCountInput = document.querySelector('.ADD_PD_MC_PLCI');
+  const productCategoryInput = document.querySelector('.ADD_PD_MC_PLCC');
 
   const productName = productNameInput.value;
   const productPrice = productPriceInput.value;
   const productCount = productCountInput.value || 0;
+  const productCategory = productCategoryInput.value;
 
-  if (productName.length > 0 && productPrice.length > 0) {
+  const AT = productPrice.length > 0 && productPrice.length > 0 && productCount.length > 0 && productCategory.length > 0 ;
+
+
+  if ( AT && productPrice.length > 0) {
     setLocalStorage("product_N", productName);
     setLocalStorage("product_P", productPrice);
     setLocalStorage("product_LCount", productCount);
+    setLocalStorage("product_CG", productCategory);
 
     productNameInput.style.outline = "2px solid transparent";
     productPriceInput.style.outline = "2px solid transparent";
+    productCountInput.style.outline = "2px solid transparent";
+    productCategoryInput.style.outline = "2px solid transparent";
+
     productNameInput.value = "";
     productPriceInput.value = "";
+    productCountInput.value = "";
+    productCategoryInput.value = "";
+
     document.querySelector('.ADD_PD_MC_I').style.backgroundImage = `url('')`;
 
     // Increment Product ID and add product
@@ -457,26 +507,20 @@ document.querySelector('.ADD_PD_MCB').addEventListener("click", () => {
         n: getLocalStorage("product_N"),
         p: getLocalStorage("product_P"),
         id: currentProductID,
-        lc: getLocalStorage("product_LCount")
+        lc: getLocalStorage("product_LCount"),
+        c: getLocalStorage("product_CG")
       }).then(() => {
         clearLocalStorage("product_I");
         clearLocalStorage("product_N");
         clearLocalStorage("product_P");
         clearLocalStorage("product_LCount");
+        clearLocalStorage("product_CG");
       }).catch((error) => {
         console.error("Error adding product: ", error);
       });
     });
-  } else {
-    // Handle invalid input by changing outline color
-    if (productName.length === 0) {
-      productNameInput.style.outline = "2px solid red";
-      productPriceInput.style.outline = productPrice.length === 0 ? "2px solid red" : "2px solid green";
-    } else {
-      productNameInput.style.outline = "2px solid green";
-      productPriceInput.style.outline = "2px solid red";
-    }
   }
+
 });
 
 
@@ -551,6 +595,17 @@ onValue(ref(db, "PI"), (snapshot) => {
 
 
 
+const HH = `
+    <div class="MCD_TCB">
+        <div class="MCD_TCB_A MCD_TCB_Value" data-id="A"><p class="AI"></p>All</div>
+        <div class="MCD_TCB_S MCD_TCB_Value" data-id="S"><p class="SI"></p>Shoes</div>
+        <div class="MCD_TCB_C MCD_TCB_Value" data-id="C"><p class="CI"></p>Clothes</div>
+        <div class="MCD_TCB_P MCD_TCB_Value" data-id="P"><p class="PI"></p>Phones</div>
+    </div>
+    `;
+
+
+    
 
 
 
@@ -558,10 +613,6 @@ onValue(ref(db, "PI"), (snapshot) => {
 
 
 
-
-
-
-/**/
 
 
 // Use constants for fixed values
@@ -730,7 +781,7 @@ setInterval(() => {
       
       // Iterate over all products
       PI.forEach((product, index) => {
-          if (true) {//index !== 0
+          if (localStorage.getItem("Product_C") === `${product.c}`.toLocaleUpperCase() || localStorage.getItem("Product_C") === "A") {//
               let { likeIcon_unlike, likeIcon_like, likeCount } = handleLikeStatus(product);
               let price = formatPrices(product.p);
               updateProductView(product, likeIcon_unlike, likeIcon_like, likeCount, price);
@@ -738,7 +789,7 @@ setInterval(() => {
       });
 
       // Update the DOM
-      HElement.innerHTML = PTC_H;
+      HElement.innerHTML = PTC_H + HH;
       SUB_PD_MElement.innerHTML = Delete_p;
       
 
@@ -812,6 +863,16 @@ setInterval(() => {
         });
 
 
+        document.querySelectorAll('.MCD_TCB_Value').forEach((e) => {
+            e.addEventListener('click', () => {
+                let dataDashed_Id = e.dataset.id;
+                
+                localStorage.setItem("Product_C",dataDashed_Id)
+                document.querySelector('.BecauseOFLodding_I').style.display = "none";
+            });
+        });
+
+
     }
 
 
@@ -833,7 +894,7 @@ setInterval(() => {
         }
     });
 
-
+    
 }, 100);
 
 
@@ -847,7 +908,7 @@ setInterval(() => {
 
 
 
-/**/
+
 
 // Function to format prices with commas
 const formatPrice = (price) => {
@@ -989,7 +1050,7 @@ setInterval(() => {
 
 
 
-/**/
+
 
 
 
@@ -1138,7 +1199,7 @@ document.querySelector('.LO_D').addEventListener('click', () => {
 
 
 
-//*ADMIN*/
+//ADMIN
 sessionStorage.setItem("ADMIN_C_I",UI.length)//confirm index
 sessionStorage.setItem("ADMIN_U_I",UI.length)//use index
 
@@ -1448,3 +1509,4 @@ document.querySelector('.ADD_PD_MC_IPI').addEventListener('change', (e) => {
 
 
 
+  
