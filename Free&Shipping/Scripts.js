@@ -691,7 +691,7 @@ function setElementHeight(selector, offset = 0) {
                   <img src="${product.i}" class="Img_FC">
               </div>
               <div class="HPCD_N">${product.n}</div>
-              <p class="HPCD_P">&#8358 ${price}</p>
+              <p class="HPCD_P">&#8358 ${price/5}</p>
               <div class="HPCD_AC" data-id="${product.id}" data-price="${product.p}">
                   <p class="HPCD_AC_I"></p> Add to cart
               </div>
