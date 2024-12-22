@@ -788,8 +788,8 @@ function setElementHeight(selector, offset = 0) {
         PI.forEach((product, index) => {
             if (localStorage.getItem("Product_C") === `${product.c}`.toLocaleUpperCase() || localStorage.getItem("Product_C") === "A") {//
                 let { likeIcon_unlike, likeIcon_like, likeCount } = handleLikeStatus(product);
-                //let price = formatPrices(product.p);
-                let price = formatPrices(`${Math.round(Number(product.p)/3)}`);
+                let price = formatPrices(product.p);
+                //let price = formatPrices(`${Math.round(Number(product.p)/3)}`);
                 updateProductView(product, likeIcon_unlike, likeIcon_like, likeCount, price);
             }
         });
