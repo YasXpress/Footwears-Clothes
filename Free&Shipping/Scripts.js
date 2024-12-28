@@ -20,7 +20,7 @@ function setElementHeight(selector, offset = 0) {
     const elem2 = document.querySelector(element2);
     if (elem1 && elem2) {
         if (condition) {
-            elem1.style.zIndex = 1;
+            elem1.style.zIndex = 2;
             elem2.style.zIndex = 0;
         } else {
             elem1.style.zIndex = 0;
@@ -287,7 +287,7 @@ function setElementHeight(selector, offset = 0) {
   
   
   
-  
+  /**/
   
   
   
@@ -599,16 +599,7 @@ function setElementHeight(selector, offset = 0) {
   
   
   
-  
-  const HH = `
-      <div class="MCD_TCB">
-          <div class="MCD_TCB_A MCD_TCB_Value" data-id="A"><p class="AI"></p>All</div>
-          <div class="MCD_TCB_S MCD_TCB_Value" data-id="S"><p class="SI"></p>Shoes</div>
-          <div class="MCD_TCB_C MCD_TCB_Value" data-id="C"><p class="CI"></p>Clothes</div>
-          <div class="MCD_TCB_P MCD_TCB_Value" data-id="P"><p class="PI"></p>Phones</div>
-      </div>
-      `;
-  
+
   
       
   
@@ -788,14 +779,16 @@ function setElementHeight(selector, offset = 0) {
         PI.forEach((product, index) => {
             if (localStorage.getItem("Product_C") === `${product.c}`.toLocaleUpperCase() || localStorage.getItem("Product_C") === "A") {//
                 let { likeIcon_unlike, likeIcon_like, likeCount } = handleLikeStatus(product);
-                let price = formatPrices(product.p);
-                //let price = formatPrices(`${Math.round(Number(product.p)/3)}`);
+                console.log('oooooooooo')
+                //let price = formatPrices(product.p);
+                let price = formatPrices(`${Math.round(Number(product.p)/3)}`);
                 updateProductView(product, likeIcon_unlike, likeIcon_like, likeCount, price);
             }
         });
   
+        
         // Update the DOM
-        HElement.innerHTML = PTC_H + HH;
+        HElement.innerHTML = PTC_H;
         SUB_PD_MElement.innerHTML = Delete_p;
         
   
@@ -901,7 +894,7 @@ function setElementHeight(selector, offset = 0) {
       });
   
       
-  }, 100);
+  }, 500);
   
   
   
@@ -1052,7 +1045,7 @@ function setElementHeight(selector, offset = 0) {
   // Running the interval to check and update cart regularly
   setInterval(() => {
       updateShoppingCart();
-  }, 100);
+  }, 500);
   
   
   
@@ -1390,7 +1383,7 @@ function setElementHeight(selector, offset = 0) {
 
         })
 
-  },100)
+  },500)
   
   
 
@@ -1545,4 +1538,5 @@ function setElementHeight(selector, offset = 0) {
   
   
   
+    
     
