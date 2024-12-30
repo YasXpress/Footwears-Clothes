@@ -894,7 +894,7 @@ function setElementHeight(selector, offset = 0) {
       });
   
       
-  }, 500);
+  }, 100);
   
   
   
@@ -1045,7 +1045,7 @@ function setElementHeight(selector, offset = 0) {
   // Running the interval to check and update cart regularly
   setInterval(() => {
       updateShoppingCart();
-  }, 500);
+  }, 100);
   
   
   
@@ -1383,7 +1383,7 @@ function setElementHeight(selector, offset = 0) {
 
         })
 
-  },500)
+  },100)
   
   
 
