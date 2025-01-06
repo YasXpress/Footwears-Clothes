@@ -780,8 +780,8 @@ function setElementHeight(selector, offset = 0) {
             if (localStorage.getItem("Product_C") === `${product.c}`.toLocaleUpperCase() || localStorage.getItem("Product_C") === "A") {//
                 let { likeIcon_unlike, likeIcon_like, likeCount } = handleLikeStatus(product);
                 console.log('oooooooooo')
-                //let price = formatPrices(product.p);
-                let price = formatPrices(`${Math.round(Number(product.p)/3)}`);
+                let price = formatPrices(product.p);
+                //let price = formatPrices(`${Math.round(Number(product.p)/3)}`);
                 updateProductView(product, likeIcon_unlike, likeIcon_like, likeCount, price);
             }
         });
@@ -886,7 +886,7 @@ function setElementHeight(selector, offset = 0) {
               setTimeout(()=>{
                 deffrentArrangement = true;
                 document.querySelector('.H').scrollTop = 1;
-              },2000)
+              },3000)
   
           }else{
               document.querySelector('.BecauseOFLodding_I').style.display = "none";
@@ -894,7 +894,7 @@ function setElementHeight(selector, offset = 0) {
       });
   
       
-  }, 100);
+  }, 1000);
   
   
   
@@ -1045,7 +1045,7 @@ function setElementHeight(selector, offset = 0) {
   // Running the interval to check and update cart regularly
   setInterval(() => {
       updateShoppingCart();
-  }, 100);
+  }, 1000);
   
   
   
@@ -1383,7 +1383,7 @@ function setElementHeight(selector, offset = 0) {
 
         })
 
-  },100)
+  },1000)
   
   
 
@@ -1533,7 +1533,7 @@ function setElementHeight(selector, offset = 0) {
       }
   
   
-    }, 100);
+    }, 1000);
   
   
   
