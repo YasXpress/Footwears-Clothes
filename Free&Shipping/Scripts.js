@@ -304,7 +304,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const database = getDatabase(app); // <-- You'll use this to access your database
+const db = getDatabase(app); // <-- You'll use this to access your database
   
   
   
