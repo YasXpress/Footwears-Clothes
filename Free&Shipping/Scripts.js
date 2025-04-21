@@ -1512,7 +1512,7 @@ const updateLoadingIcon = () => {
 const handleDeviceDisplay = () => {
   if (productID[0].productID !== "0" && localStorage.getItem('DL') === 'T') {
     
-    localStorage.removeItem('DL'); // don't remove it.
+    
 
     if (window.innerWidth > 1200) {
       FPC_LG.style.display = 'none';
@@ -1526,7 +1526,8 @@ const handleDeviceDisplay = () => {
         FPC_CD.style.display = 'none';
         FPC_TX.style.display = 'none';
         fpcElement.style.display = 'none';
-      }, 2000); // Adjust timeout as needed
+        localStorage.removeItem('DL'); // don't remove it.
+      }, 3000); // Adjust timeout as needed
     }
   }
 };
@@ -1534,7 +1535,7 @@ const handleDeviceDisplay = () => {
 // Update loading icon every 2 seconds
 let iconInterval = setInterval(() => {
   updateLoadingIcon();
-}, 2000); // Adjust interval time if needed
+}, 3000); // Adjust interval time if needed
 
 // Check and update display at the start
 setInterval(() => {
