@@ -847,32 +847,24 @@ const db=getDatabase();
         */
 
 
-let index = 0;
+async function displayProductsImmediately() {
+    for (const product of PI) {
+        if (
+            localStorage.getItem("Product_C") === `${product.c}`.toLocaleUpperCase() ||
+            localStorage.getItem("Product_C") === "A"
+        ) {
+            let { likeIcon_unlike, likeIcon_like, likeCount } = handleLikeStatus(product);
+            let price = formatPrices(product.p);
+            let priceDiscountFormat = Math.round(Number(product.p) + (Number(product.p) * 0.1));
+            let priceDiscount = formatPrices(priceDiscountFormat.toString());
 
-const interval = setInterval(() => {
-    if (index >= PI.length) {
-        clearInterval(interval); // Stop when all items are processed
-        return;
+            updateProductView(product, likeIcon_unlike, likeIcon_like, likeCount, price, priceDiscount);
+            
+        }
     }
+}
 
-    const product = PI[index];
-
-    if (
-        localStorage.getItem("Product_C") === `${product.c}`.toLocaleUpperCase() ||
-        localStorage.getItem("Product_C") === "A"
-    ) {
-        let { likeIcon_unlike, likeIcon_like, likeCount } = handleLikeStatus(product);
-        let price = formatPrices(product.p);
-        let priceDiscountFormat = Math.round(Number(product.p) + (Number(product.p) * 0.1));
-        let priceDiscount = formatPrices(priceDiscountFormat.toString());
-
-        updateProductView(product, likeIcon_unlike, likeIcon_like, likeCount, price, priceDiscount);
-    }
-
-    index++;
-}, 50); // Adjust the interval (in ms) to make it faster/slower
-
-
+displayProductsImmediately();
 
 
 
