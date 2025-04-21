@@ -1504,7 +1504,7 @@ const handleDeviceDisplay = () => {
         FPC_CD.style.display = 'none';
         FPC_TX.style.display = 'none';
         fpcElement.style.display = 'none';
-      }, 10000); // Adjust timeout as needed
+      }, 2000); // Adjust timeout as needed
     }
   }
 };
