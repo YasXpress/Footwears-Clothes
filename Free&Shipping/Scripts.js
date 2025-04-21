@@ -995,7 +995,7 @@ displayProductsImmediately();
       });
   
       
-  }, 1000);
+  }, 100);
   
   
   
