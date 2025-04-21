@@ -1512,7 +1512,7 @@ const updateLoadingIcon = () => {
 const handleDeviceDisplay = () => {
   if (productID[0].productID !== "0" && localStorage.getItem('DL') === 'T') {
     
-    localStorage.setItem('DL', 'F'); // don't remove it.
+    localStorage.removeItem('DL'); // don't remove it.
 
     if (window.innerWidth > 1200) {
       FPC_LG.style.display = 'none';
