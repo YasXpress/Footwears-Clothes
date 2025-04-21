@@ -879,10 +879,9 @@ displayProductsImmediately();
         SUB_PD_MElement.innerHTML = Delete_p;
         
         
-        if(HElement.innerHTML !== ""){
-          localStorage.setItem('DL', 'T');// don't remove
-        }
-        
+        if (HElement && HElement.innerHTML.trim() !== "") {
+            localStorage.setItem('DL', 'T'); // don't remove
+         }
   
         
   
