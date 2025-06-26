@@ -1086,7 +1086,7 @@ const db=getDatabase();
       return `
           <div class="CPCD_B">
               <div class="CPCD_B_L">
-                  <div class="CPCD_B_LI HPCD_I" style="background-image: url('${item.i}')"  data-i="${item.i}" data-n="${item.n}" data-p="${item.p}" data-id="${item.id}" data-lc="${item.lc}">
+                  <div class="CPCD_B_LI HPCD_I${item.c}" style="background-image: url('${item.i}')"  data-i="${item.i}" data-n="${item.n}" data-p="${item.p}" data-id="${item.id}" data-lc="${item.lc}">
                       <img src="${item.i}" class="Img_FC">
                   </div>
               </div>
@@ -1423,7 +1423,7 @@ const db=getDatabase();
       ADMIN_PTC_Order += `
         <div class="A_MCD_MAIN_SBD_B">
           <div class="A_MCD_MAIN_SBD_B_L">
-            <div class="A_MCD_MAIN_SBD_B_LI HPCD_I" style="background-image: url('${product.i}');" data-i="${product.i}" data-n="${product.n}" data-p="${product.p}">
+            <div class="A_MCD_MAIN_SBD_B_LI HPCD_I${product.c}" style="background-image: url('${product.i}');" data-i="${product.i}" data-n="${product.n}" data-p="${product.p}">
               <img src="${product.i}" class="Img_FC">
             </div>
           </div>
