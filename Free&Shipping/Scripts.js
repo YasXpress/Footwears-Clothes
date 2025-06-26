@@ -1394,7 +1394,7 @@ const db=getDatabase();
             order: userOrder,
             view: "T"
           });
-          sessionStorage.setItem("ADMIN_C_I", UI.length - 1);
+          //sessionStorage.setItem("ADMIN_C_I", UI.length - 1);
         }
       });
     });
@@ -1474,7 +1474,7 @@ const db=getDatabase();
   
       renderOrderDetails();
     }
-  }, 1000);
+  }, 100);
   
   
   
