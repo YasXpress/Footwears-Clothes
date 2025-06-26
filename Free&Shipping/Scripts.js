@@ -725,23 +725,24 @@ const db=getDatabase();
   
   // Function to update product view
   const updateProductView = (product, likeIcon_unlike, likeIcon_like, likeCount, price, priceDiscount) => {
+      console.log(product.c)
       PTC_H += `
           <div class="HPCD">
               <div class="HPCD_T">
                   <p class="HPCD_T_N">new</p>
                   <div class="HPCD_T_CI">
                       <span class="HPCD_T_C HPCD_T_C${product.id}" data-like-count="${product.lc}">${likeCount}</span>
-                      <p class="HPCD_T_IB HPCD_T_IB${product.id}" style="display: ${likeIcon_unlike};" data-i="${product.i}" data-n="${product.n}" data-p="${product.p}" data-id="${product.id}" data-lc="${product.lc}"></p>
+                      <p class="HPCD_T_IB HPCD_T_IB${product.c} HPCD_T_IB${product.id}" style="display: ${likeIcon_unlike};" data-i="${product.i}" data-n="${product.n}" data-p="${product.p}" data-id="${product.id}" data-lc="${product.lc}"></p>
                       <p class="HPCD_T_IC HPCD_T_IC${product.id}" style="display: ${likeIcon_like};" data-i="${product.i}" data-n="${product.n}" data-p="${product.p}" data-id="${product.id}" data-lc="${product.lc}"></p>
                   </div>
               </div>
-              <div class="HPCD_I" style="background-image: url('${product.i}');" data-i="${product.i}" data-n="${product.n}" data-p="${product.p}" data-id="${product.id}" data-lc="${product.lc}">
+              <div class="HPCD_I HPCD_I${product.c}" style="background-image: url('${product.i}');" data-i="${product.i}" data-n="${product.n}" data-p="${product.p}" data-id="${product.id}" data-lc="${product.lc}">
                   <img src="${product.i}" class="Img_FC">
               </div>
               <div class="HPCD_N">${product.n}</div>
               <p class="HPCD_P">&#8358 ${price}</p>
               <p class="HPCD_PD">&#8358 ${priceDiscount}</p>
-              <div class="HPCD_AC" data-id="${product.id}" data-price="${product.p}">
+              <div class="HPCD_AC${product.c} HPCD_AC" data-id="${product.id}" data-price="${product.p}">
                   <p class="HPCD_AC_I"></p> Add to cart
               </div>
               <div class="HPCD_IS">
@@ -752,7 +753,7 @@ const db=getDatabase();
       
       Delete_p += `
           <div class="SUB_PD_MPC" style="background-image: url('${product.i}');">
-              <p class="SUB_PD_MPC_D" data-id="${product.id}"></p>
+              <p class="SUB_PD_MPC_D${product.c} SUB_PD_MPC_D" data-id="${product.id}"></p>
               <img src="${product.i}" class="Img_FC HPCD_I" data-i="${product.i}" data-n="${product.n}" data-p="${product.p}" data-id="${product.id}" data-lc="${product.lc}">
           </div>
       `;
@@ -775,6 +776,10 @@ const db=getDatabase();
           localStorage.setItem("CCA_represh", 'true');
       } else {
           AElement.style.display = "block";
+      }
+
+      if(document.querySelector('.CA').innerText === 'Create New Account'){
+        document.querySelector('.CA').style.animationName = 'L_sign';
       }
   };
   
@@ -832,7 +837,7 @@ const db=getDatabase();
         
   
         
-       /*
+       
         // Iterate over all products
         PI.forEach((product, index) => {
             if (localStorage.getItem("Product_C") === `${product.c}`.toLocaleUpperCase() || localStorage.getItem("Product_C") === "A") {//
@@ -844,31 +849,8 @@ const db=getDatabase();
                 updateProductView(product, likeIcon_unlike, likeIcon_like, likeCount, price,priceDiscount);
             }
         });
-        */
 
-
-async function displayProductsImmediately() {
-    for (const product of PI) {
-        if (
-            localStorage.getItem("Product_C") === `${product.c}`.toLocaleUpperCase() ||
-            localStorage.getItem("Product_C") === "A"
-        ) {
-            let { likeIcon_unlike, likeIcon_like, likeCount } = handleLikeStatus(product);
-            let price = formatPrices(product.p);
-            let priceDiscountFormat = Math.round(Number(product.p) + (Number(product.p) * 0.1));
-            let priceDiscount = formatPrices(priceDiscountFormat.toString());
-
-            updateProductView(product, likeIcon_unlike, likeIcon_like, likeCount, price, priceDiscount);
-            
-        }
-    }
-}
-
-displayProductsImmediately();
-
-
-
-          
+        
 
 
 
@@ -879,103 +861,179 @@ displayProductsImmediately();
         SUB_PD_MElement.innerHTML = Delete_p;
         
         
-        if (HElement && HElement.innerHTML.trim() !== "") {
-            localStorage.setItem('DL', 'T'); // don't remove
-         }
-  
+        if(HElement.innerHTML !== ""){
+          localStorage.setItem('DL', 'T');// don't remove
+        }
         
   
-          
-          // Event listeners for "Add to Cart"
-          document.querySelectorAll('.HPCD_AC').forEach((e) => {
-              e.addEventListener('click', () =>{
-                handleAddToCart(e)
 
-                if(document.querySelector('.CA').innerText === 'Create New Account'){
-                  document.querySelector('.CA').style.animationName = 'L_sign';
-                }
+
+
+
+
+
+
+
+
+
+
+        // Class selectors for different "Add to Cart" buttons
+        const buttonClasses_HPCD_AC = ['HPCD_ACS', 'HPCD_ACC', 'HPCD_ACP', 'HPCD_ACW'];
+
+        /**
+         * Attach click event listener to all buttons of specified classes
+         * When clicked, each button calls handleAddToCart with its element reference
+         */
+        buttonClasses_HPCD_AC.forEach(className => {
+          document.querySelectorAll(`.${className}`).forEach(e => {
+            e.addEventListener('click', () => handleAddToCart(e));
+            
+          });
+        });
+
+
+
+
+
+        
+
+
+        // Class selectors for different "Remove from Cart" buttons
+        const buttonClasses_SUB_PD_MPC_D = ['SUB_PD_MPC_DS', 'SUB_PD_MPC_DC', 'SUB_PD_MPC_DP', 'SUB_PD_MPC_DW'];
+
+        /**
+         * Attach click event listener to all buttons of specified classes
+         * When clicked, each button calls handleRemoveFromCart with its element reference
+         */
+        buttonClasses_SUB_PD_MPC_D.forEach(className => {
+          document.querySelectorAll(`.${className}`).forEach(e => {
+            e.addEventListener('click', () => handleRemoveFromCart(e));
+          });
+        });
+
+
+
+
+
+
+
+
+
+        // Class selectors for Like functionality
+        const buttonClasses_HPCD_T_IB = ['HPCD_T_IBS', 'HPCD_T_IBC', 'HPCD_T_IBP', 'HPCD_T_IBW'];
+
+        // Event listeners for Like functionality
+        buttonClasses_HPCD_T_IB.forEach(className => {
+          document.querySelectorAll(`.${className}`).forEach(e => {
+            e.addEventListener('click', () => {
+              let dataDashed_Id = e.dataset.id;
+              let dataDashed_lc=e.dataset.lc;
+              document.querySelector(`.HPCD_T_IC${dataDashed_Id}`).style.display = "block";
+              document.querySelector(`.HPCD_T_IB${dataDashed_Id}`).style.display = "none";
+              localStorage.setItem(`likeIcon${dataDashed_Id}`, 'like');
+              /**/
+              // Update the like count
+              update(ref(getDatabase(), `${PRODUCT_PREFIX}${dataDashed_Id}`), {
+                  lc: Number(dataDashed_lc) + 1
               });
-          });
-  
-          // Event listeners for "Remove from Cart"
-          document.querySelectorAll('.SUB_PD_MPC_D').forEach((e) => {
-              e.addEventListener('click', () => handleRemoveFromCart(e));
-          });
-  
-          // Event listeners for Like/Unlike functionality
-          document.querySelectorAll('.HPCD_T_IB').forEach((e) => {
-              e.addEventListener('click', () => {
-                  let dataDashed_Id = e.dataset.id;
-                  let dataDashed_lc=e.dataset.lc;
-                  document.querySelector(`.HPCD_T_IC${dataDashed_Id}`).style.display = "block";
-                  document.querySelector(`.HPCD_T_IB${dataDashed_Id}`).style.display = "none";
-                  localStorage.setItem(`likeIcon${dataDashed_Id}`, 'like');
-                  /**/
-                  // Update the like count
-                  update(ref(getDatabase(), `${PRODUCT_PREFIX}${dataDashed_Id}`), {
-                      lc: Number(dataDashed_lc) + 1
-                  });
                   
-              });
+            });
           });
-  
-          document.querySelectorAll('.HPCD_T_IC').forEach((e) => {
-              e.addEventListener('click', () => {
-                  let dataDashed_Id = e.dataset.id;
-                  let dataDashed_lc=e.dataset.lc;
-                  document.querySelector(`.HPCD_T_IC${dataDashed_Id}`).style.display = "none";
-                  document.querySelector(`.HPCD_T_IB${dataDashed_Id}`).style.display = "block";
-                  localStorage.setItem(`likeIcon${dataDashed_Id}`, 'unlike');
-                  /**/
-                  // Update the like count
-                  update(ref(getDatabase(), `${PRODUCT_PREFIX}${dataDashed_Id}`), {
-                      lc: Number(dataDashed_lc) - 1
-                  });
+        });
+
+
+
+
+
+
+        // Class selectors for Unlike functionality
+        const buttonClasses_HPCD_T_IC = ['HPCD_T_ICS', 'HPCD_T_ICC', 'HPCD_T_ICP', 'HPCD_T_ICW'];
+
+        // Event listeners for Unlike functionality
+        buttonClasses_HPCD_T_IC.forEach(className => {
+          document.querySelectorAll(`.${className}`).forEach(e => {
+            e.addEventListener('click', () => {
+              let dataDashed_Id = e.dataset.id;
+              let dataDashed_lc=e.dataset.lc;
+              document.querySelector(`.HPCD_T_IC${dataDashed_Id}`).style.display = "none";
+              document.querySelector(`.HPCD_T_IB${dataDashed_Id}`).style.display = "block";
+              localStorage.setItem(`likeIcon${dataDashed_Id}`, 'unlike');
+              /**/
+              // Update the like count
+              update(ref(getDatabase(), `${PRODUCT_PREFIX}${dataDashed_Id}`), {
+                  lc: Number(dataDashed_lc) - 1
+              });
                   
-              });
+            });
           });
-  
-  
-          
-          document.querySelectorAll('.HPCD_I').forEach((e) => {
-              e.addEventListener('click', () => {
-                  let dataDashed_Id = e.dataset.id;
-                  let dataDashed_lc=e.dataset.lc;
-                  let dataDashed_i=e.dataset.i;
-                  let dataDashed_n=e.dataset.n;
-                  let dataDashed_p=formatPrices(e.dataset.p);
-                  let dataDashed_Q=e.dataset.q;
-                      
-  
-                  document.querySelector(".DIC_D").innerHTML=`
-                  <div class="DIC_I">
-                      <p class="DIC_BACK"></p>
-                      <img src="${dataDashed_i}" class="Img_FC">
-                  </div>
-                  <P class="DIC_N">${dataDashed_n}</P>
-                  <P class="DIC_P"> &#8358 ${dataDashed_p}</P>
-                  <div class="HPCD_IS">
-                      <p class="HPCD_IS_I"></p> In stock
-                  </div>
-                  `;
-                  document.querySelector(".DIC_D_C").style.display="block";
-              });
-          });
-  
-  
-          document.querySelectorAll('.MCD_TCB_Value').forEach((e) => {
-              e.addEventListener('click', () => {
-                  let dataDashed_Id = e.dataset.id;
+        });
+
+
+
+
+
+        
+
+
+
+
+        // Class selectors for Display product functionality
+        const buttonClasses_HPCD_I = ['HPCD_IS', 'HPCD_IC', 'HPCD_IP', 'HPCD_IW'];
+
+        // Event listeners for Display product functionality
+        buttonClasses_HPCD_I.forEach(className => {
+          document.querySelectorAll(`.${className}`).forEach(e => {
+            e.addEventListener('click', () => {
+              let dataDashed_Id = e.dataset.id;
+              let dataDashed_lc=e.dataset.lc;
+              let dataDashed_i=e.dataset.i;
+              let dataDashed_n=e.dataset.n;
+              let dataDashed_p=formatPrices(e.dataset.p);
+              let dataDashed_Q=e.dataset.q;
                   
-                  localStorage.setItem("Product_C",dataDashed_Id)
-                  document.querySelector('.BecauseOFLodding_I').style.display = "none";
-              });
+
+              document.querySelector(".DIC_D").innerHTML=`
+              <div class="DIC_I">
+                  <p class="DIC_BACK"></p>
+                  <img src="${dataDashed_i}" class="Img_FC">
+              </div>
+              <P class="DIC_N">${dataDashed_n}</P>
+              <P class="DIC_P"> &#8358 ${dataDashed_p}</P>
+              <div class="HPCD_IS">
+                  <p class="HPCD_IS_I"></p> In stock
+              </div>
+              `;
+              document.querySelector(".DIC_D_C").style.display="block";
+            });
           });
+        });
+
+
+
+    
+        document.querySelectorAll('.MCD_TCB_Value').forEach((e) => {
+            e.addEventListener('click', () => {
+                let dataDashed_Id = e.dataset.id;
+                
+                localStorage.setItem("Product_C",dataDashed_Id)
+                document.querySelector('.BecauseOFLodding_I').style.display = "none";
+            });
+        });
   
   
       }
   
   
+
+
+
+
+
+
+
+
+
+
   
       var div = document.querySelector('.H');  // Replace with your div's ID
       div.addEventListener('scroll', function() {
@@ -995,7 +1053,7 @@ displayProductsImmediately();
       });
   
       
-  }, 100);
+  }, 1000);
   
   
   
@@ -1036,9 +1094,9 @@ displayProductsImmediately();
                   <p class="CPCD_B_RN">${item.n}</p>
                   <p class="CPCD_B_RP"> &#8358 ${price}</p>
                   <div class="CPCD_B_RQ">
-                      <p class="CPCD_B_R_A" data-id="${item.id}" data-price="${item.p}">+</p>
+                      <p class="CPCD_B_R_A CPCD_B_R_A${item.c}" data-id="${item.id}" data-price="${item.p}">+</p>
                       <p class="CPCD_B_R_Q CPCD_B_R_Q${item.id}">${quantity}</p>
-                      <p class="CPCD_B_R_S" data-id="${item.id}" data-price="${item.p}">-</p>
+                      <p class="CPCD_B_R_S CPCD_B_R_S${item.c}" data-id="${item.id}" data-price="${item.p}">-</p>
                   </div>
                   <p class="CPCD_B_RT CPCD_B_RT${item.id}"> &#8358 ${totalPrice}</p>
               </div>
@@ -1058,10 +1116,30 @@ displayProductsImmediately();
     document.querySelector('.CC').innerText = quantity;
   };
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // Event listeners for quantity updates
   const addQuantityEventListeners = () => {
-      document.querySelectorAll('.CPCD_B_R_A').forEach(item => {
-          item.addEventListener('click', (e) => {
+
+    // Class selectors for CPCD_B_R_A buttons
+        const buttonClasses_CPCD_B_R_A = ['CPCD_B_R_AS', 'CPCD_B_R_AC', 'CPCD_B_R_AP', 'CPCD_B_R_AW'];
+
+        buttonClasses_CPCD_B_R_A.forEach(className => {
+          document.querySelectorAll(`.${className}`).forEach(item => {
+            item.addEventListener('click', (e) => {
               const id = e.target.dataset.id;
               const price = e.target.dataset.price;
               const quantity = updateLocalStorage(id);
@@ -1069,11 +1147,17 @@ displayProductsImmediately();
               document.querySelector(`.CPCD_B_R_Q${id}`).innerText = quantity;
               document.querySelector(`.CPCD_B_RT${id}`).innerHTML = `&#8358 ${totalPrice}`;
               //updateCartDisplay(document.querySelector('.C').innerHTML);
+            });
           });
-      });
-  
-      document.querySelectorAll('.CPCD_B_R_S').forEach(item => {
-          item.addEventListener('click', (e) => {
+        });
+
+
+        // Class selectors for CPCD_B_R_S buttons
+        const buttonClasses_CPCD_B_R_S = ['CPCD_B_R_SS', 'CPCD_B_R_SC', 'CPCD_B_R_SP', 'CPCD_B_R_SW'];
+
+        buttonClasses_CPCD_B_R_S.forEach(className => {
+          document.querySelectorAll(`.${className}`).forEach(item => {
+            item.addEventListener('click', (e) => {
               const id = e.target.dataset.id;
               const price = e.target.dataset.price;
               let quantity = parseInt(document.querySelector(`.CPCD_B_R_Q${id}`).innerText);
@@ -1090,10 +1174,26 @@ displayProductsImmediately();
               document.querySelector(`.CPCD_B_R_Q${id}`).innerText = quantity;
               document.querySelector(`.CPCD_B_RT${id}`).innerHTML = `&#8358 ${totalPrice}`;
               //updateCartDisplay(document.querySelector('.C').innerHTML);
+            });
           });
-      });
+        });
+
+
+
   };
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
   // Main function to handle the cart and local storage logic
   const updateShoppingCart = () => {
       let cartContent = '<div class="CPCD_T">Shopping Cart</div>';
@@ -1512,7 +1612,7 @@ const updateLoadingIcon = () => {
 const handleDeviceDisplay = () => {
   if (productID[0].productID !== "0" && localStorage.getItem('DL') === 'T') {
     
-    
+    localStorage.setItem('DL', 'F'); // don't remove it.
 
     if (window.innerWidth > 1200) {
       FPC_LG.style.display = 'none';
@@ -1526,8 +1626,7 @@ const handleDeviceDisplay = () => {
         FPC_CD.style.display = 'none';
         FPC_TX.style.display = 'none';
         fpcElement.style.display = 'none';
-        localStorage.removeItem('DL'); // don't remove it.
-      }, 3000); // Adjust timeout as needed
+      }, 2000); // Adjust timeout as needed
     }
   }
 };
@@ -1535,11 +1634,15 @@ const handleDeviceDisplay = () => {
 // Update loading icon every 2 seconds
 let iconInterval = setInterval(() => {
   updateLoadingIcon();
-}, 3000); // Adjust interval time if needed
+}, 2000); // Adjust interval time if needed
 
 // Check and update display at the start
 setInterval(() => {
     handleDeviceDisplay();
 }, 1000);
 
-    
+
+
+
+
+
