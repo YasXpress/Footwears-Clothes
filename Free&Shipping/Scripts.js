@@ -431,31 +431,30 @@ const db=getDatabase();
         return;
     }
   
-    // Loop through each UI element
-    UI.forEach((item, index) => {
-        if (!item?.order) {
-            console.warn(`Skipping UI item at index ${index} due to missing 'order' property.`);
-            return;
-        }
+    const item = UI.find(item => item.phoneNumber === phoneNumber);
 
-        const userNP = getLocalStorage('user_NP');
-        if(item.phoneNumber === userNP.split('/')[1]){
-            // Process each order part in 'order'
-            item.order.split(',').forEach((part) => {
-                if (part.includes('/')) {
-                    const [partId] = part.split('/');
-                    if (partId) {
-                        saveToLocalStorage(`CI${partId}`, part); // Save part to localStorage
-                    } else {
-                        console.warn(`Invalid part: ${part} at index ${index}`);
-                    }
-                } else {
-                    console.warn(`Skipping invalid part: ${part} at index ${index}. Expected '/' separator.`);
-                }
+if (item) {
+    hasAccount = 'true';
+
+    const orderSet = getLocalStorage('orderSet') || '';
+    if (item.order !== orderSet) {
+        if (localStorage.getItem('alreadyUpload') === 'true' || orderSet) {
+            /**/
+            // Update order in the database
+            update(ref(db, `UI/${phoneNumber}`), {
+                userName,
+                phoneNumber,
+                order: orderSet,
+                view: "F"
             });
+            
+        } else if (localStorage.getItem('EmptyOrder') !== 'T') {
+            localStorage.setItem('alreadyUpload', 'true');
+            processUI(UI); // Process UI to save order details to localStorage
         }
-    });
-  }
+    }
+}
+
   
   // Main function to update the UI based on the current state
   const updateUI = () => {
