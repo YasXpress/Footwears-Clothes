@@ -1108,7 +1108,7 @@ const db=getDatabase();
         <h2>Confirm Your Payment</h2>
         ${paymentCard}
         <div class="total-section">
-        Total: ₦${formatPrice(paymentTotal)}
+        Total: ₦${formatPrice(paymentTotal.toFixed(2))}
         </div>
 
         <div class="account-box">
@@ -1125,14 +1125,13 @@ const db=getDatabase();
     </div>`;
 
     if(cartContent === '<div class="CPCD_T">Shopping Cart</div>'){
-      document.querySelector('.C').innerHTML = cartContent + payment_card+ '<div class="Empty_C"></div>';
+      document.querySelector('.C').innerHTML = cartContent + '<div class="Empty_C"></div>' + payment_card;
     }else{
-      document.querySelector('.C').innerHTML = cartContent + payment_card;
+      document.querySelector('.C').innerHTML = cartContent+ payment_card;
     }
   
     document.querySelector('.CC').innerText = quantity;
   };
-  
 
 
 
