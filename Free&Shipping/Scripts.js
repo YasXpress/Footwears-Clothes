@@ -335,13 +335,6 @@ const db=getDatabase();
 
 
 
-set(ref(db, `UI/+2349162820838`), {
-        userName:"yahaya abdullahi",
-        phoneNumber:"+2349162820838",
-        order: "5/6",
-        view:"F"
-      })
-
 
 
   
