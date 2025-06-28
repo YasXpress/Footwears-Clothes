@@ -304,15 +304,10 @@ function setElementHeight(selector, offset = 0) {
   
   
   
-  
-  
 
 
 
-
-
-
-
+/**/
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
@@ -389,15 +384,12 @@ const db=getDatabase();
     view:""
   }];
   
+
+
+
   
 
   
-
-
-
-
-
-
 
   
   /**/
@@ -522,9 +514,12 @@ const db=getDatabase();
   
   
   
-  
+  /* */
   // Fetch product IDs
   let productID = [{productID:"0"}];
+  
+
+  
   
   const fetchProductID = () => {
     /**/
@@ -533,12 +528,13 @@ const db=getDatabase();
   };
   
   setInterval(fetchProductID, 100);
-
+  /**/
   onValue(ref(db, "productID"), (snapshot) => {
     productID = [];
     productID.push(snapshot.val());
   });
   
+
   // Add product function
   document.querySelector('.ADD_PD_MCB').addEventListener("click", () => {
     const productNameInput = document.querySelector('.ADD_PD_MC_PNI');
@@ -616,8 +612,7 @@ const db=getDatabase();
   /**/
   // Define a constant for storing PI data.
   const PI = [];
-  
-  
+
   
   // Function to handle value changes securely and efficiently.
   const handlePIData = (snapshot) => {
@@ -725,7 +720,7 @@ const db=getDatabase();
   
   // Function to update product view
   const updateProductView = (product, likeIcon_unlike, likeIcon_like, likeCount, price, priceDiscount) => {
-      console.log(product.c)
+    
       PTC_H += `
           <div class="HPCD">
               <div class="HPCD_T">
@@ -733,7 +728,7 @@ const db=getDatabase();
                   <div class="HPCD_T_CI">
                       <span class="HPCD_T_C HPCD_T_C${product.id}" data-like-count="${product.lc}">${likeCount}</span>
                       <p class="HPCD_T_IB HPCD_T_IB${product.c} HPCD_T_IB${product.id}" style="display: ${likeIcon_unlike};" data-i="${product.i}" data-n="${product.n}" data-p="${product.p}" data-id="${product.id}" data-lc="${product.lc}"></p>
-                      <p class="HPCD_T_IC HPCD_T_IC${product.id}" style="display: ${likeIcon_like};" data-i="${product.i}" data-n="${product.n}" data-p="${product.p}" data-id="${product.id}" data-lc="${product.lc}"></p>
+                      <p class="HPCD_T_IC HPCD_T_IC${product.c} HPCD_T_IC${product.id}" style="display: ${likeIcon_like};" data-i="${product.i}" data-n="${product.n}" data-p="${product.p}" data-id="${product.id}" data-lc="${product.lc}"></p>
                   </div>
               </div>
               <div class="HPCD_I HPCD_I${product.c}" style="background-image: url('${product.i}');" data-i="${product.i}" data-n="${product.n}" data-p="${product.p}" data-id="${product.id}" data-lc="${product.lc}">
@@ -936,7 +931,7 @@ const db=getDatabase();
               update(ref(getDatabase(), `${PRODUCT_PREFIX}${dataDashed_Id}`), {
                   lc: Number(dataDashed_lc) + 1
               });
-                  
+                 
             });
           });
         });
@@ -1086,7 +1081,7 @@ const db=getDatabase();
       return `
           <div class="CPCD_B">
               <div class="CPCD_B_L">
-                  <div class="CPCD_B_LI HPCD_I${item.c}" style="background-image: url('${item.i}')"  data-i="${item.i}" data-n="${item.n}" data-p="${item.p}" data-id="${item.id}" data-lc="${item.lc}">
+                  <div class="CPCD_B_LI HPCD_I" style="background-image: url('${item.i}')"  data-i="${item.i}" data-n="${item.n}" data-p="${item.p}" data-id="${item.id}" data-lc="${item.lc}">
                       <img src="${item.i}" class="Img_FC">
                   </div>
               </div>
@@ -1098,19 +1093,41 @@ const db=getDatabase();
                       <p class="CPCD_B_R_Q CPCD_B_R_Q${item.id}">${quantity}</p>
                       <p class="CPCD_B_R_S CPCD_B_R_S${item.c}" data-id="${item.id}" data-price="${item.p}">-</p>
                   </div>
-                  <p class="CPCD_B_RT CPCD_B_RT${item.id}"> &#8358 ${totalPrice}</p>
+                  <p class="CPCD_B_RT CPCD_B_RT${item.id}">Total: &#8358 ${totalPrice}</p>
               </div>
           </div>
       `;
   };
   
+
   // Function to update cart display
-  const updateCartDisplay = (cartContent , quantity) => {
-  
+  const updateCartDisplay = (cartContent , quantity , paymentCard , paymentTotal) => {
+    const payment_card =`
+    <div class="payment-card-div">
+    <div class="payment-card">
+        <h2>Confirm Your Payment</h2>
+        ${paymentCard}
+        <div class="total-section">
+        Total: ₦${formatPrice(paymentTotal)}
+        </div>
+
+        <div class="account-box">
+        <strong>Account Name:</strong> Yahaya Sa’ad Abdullahi
+        <strong>Bank:</strong> Opay
+        <strong>Account Number:</strong> 9162820838
+        </div>
+
+        <a class="whatsapp-button" href="https://wa.me/+2349162820838" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"/>
+        Confirm via WhatsApp
+        </a>
+    </div>
+    </div>`;
+
     if(cartContent === '<div class="CPCD_T">Shopping Cart</div>'){
-      document.querySelector('.C').innerHTML = cartContent + '<div class="Empty_C"></div>';
+      document.querySelector('.C').innerHTML = cartContent + payment_card+ '<div class="Empty_C"></div>';
     }else{
-      document.querySelector('.C').innerHTML = cartContent;
+      document.querySelector('.C').innerHTML = cartContent + payment_card;
     }
   
     document.querySelector('.CC').innerText = quantity;
@@ -1145,7 +1162,7 @@ const db=getDatabase();
               const quantity = updateLocalStorage(id);
               const totalPrice = formatPrice(price * quantity);
               document.querySelector(`.CPCD_B_R_Q${id}`).innerText = quantity;
-              document.querySelector(`.CPCD_B_RT${id}`).innerHTML = `&#8358 ${totalPrice}`;
+              document.querySelector(`.CPCD_B_RT${id}`).innerHTML = `Total: &#8358 ${totalPrice}`;
               //updateCartDisplay(document.querySelector('.C').innerHTML);
             });
           });
@@ -1172,7 +1189,7 @@ const db=getDatabase();
               }
               const totalPrice = formatPrice(price * quantity);
               document.querySelector(`.CPCD_B_R_Q${id}`).innerText = quantity;
-              document.querySelector(`.CPCD_B_RT${id}`).innerHTML = `&#8358 ${totalPrice}`;
+              document.querySelector(`.CPCD_B_RT${id}`).innerHTML = `Total: &#8358 ${totalPrice}`;
               //updateCartDisplay(document.querySelector('.C').innerHTML);
             });
           });
@@ -1200,6 +1217,9 @@ const db=getDatabase();
       let cartIds = [];
       let cartTotal = 0;
       let orderSet = "";
+      let paymentCard = "";
+      let paymentTotal = 0;
+
   
       
   
@@ -1220,6 +1240,16 @@ const db=getDatabase();
                   const quantity = parseInt(localStorage.getItem(`CI${currentItem.id}`).split('/')[1]);
                   cartContent += createCartItem(currentItem, quantity);
                   cartTotal += quantity;
+
+
+                  paymentCard += `
+                  <div class="product-row">
+                    <div class="product-name">${currentItem.n}</div>
+                    <div class="product-qty">Qty: ${quantity}</div>
+                    <div class="product-subtotal">₦ ${formatPrice(currentItem.p * quantity)}</div>
+                  </div>`;
+
+                  paymentTotal += currentItem.p * quantity;
   
                   if(i === 0){
                       orderSet += localStorage.getItem(`CI${currentItem.id}`);
@@ -1235,7 +1265,7 @@ const db=getDatabase();
           }
           
   
-          updateCartDisplay(cartContent, cartTotal);
+          updateCartDisplay(cartContent, cartTotal, paymentCard, paymentTotal);
           addQuantityEventListeners();
       }
   };
@@ -1423,7 +1453,7 @@ const db=getDatabase();
       ADMIN_PTC_Order += `
         <div class="A_MCD_MAIN_SBD_B">
           <div class="A_MCD_MAIN_SBD_B_L">
-            <div class="A_MCD_MAIN_SBD_B_LI HPCD_I${product.c}" style="background-image: url('${product.i}');" data-i="${product.i}" data-n="${product.n}" data-p="${product.p}">
+            <div class="A_MCD_MAIN_SBD_B_LI HPCD_I" style="background-image: url('${product.i}');" data-i="${product.i}" data-n="${product.n}" data-p="${product.p}">
               <img src="${product.i}" class="Img_FC">
             </div>
           </div>
@@ -1454,6 +1484,7 @@ const db=getDatabase();
     if (!phoneNumber) return;
     remove(ref(db, `UI/${phoneNumber}`));
     sessionStorage.setItem("ADMIN_C_I", UI.length - 1);
+    document.querySelector('.A_MCD_MAIN_S').style.display='none';
   };
   
   document.querySelector('.A_MCD_D').addEventListener('click', deleteUser);
@@ -1474,7 +1505,7 @@ const db=getDatabase();
   
       renderOrderDetails();
     }
-  }, 100);
+  }, 1000);
   
   
   
