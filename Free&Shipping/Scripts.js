@@ -373,8 +373,11 @@ const db=getDatabase();
     }
   };
 
-  
-  
+
+
+
+
+
   // Set Interval for UI handling
   setInterval(handleUIUpdate, 100);
   /**/
@@ -469,6 +472,10 @@ const db=getDatabase();
     const [userName, phoneNumber] = userNP.split('/');
     if (!userName || !phoneNumber || getLocalStorage('ADMIN') === 'true') return;
   
+  
+    
+
+    /*
     let hasAccount = 'false'; // Default to 'false'
   
     UI.forEach((item) => {
@@ -478,7 +485,7 @@ const db=getDatabase();
             if (item.order !== getLocalStorage('orderSet')) {
                 const orderSet = getLocalStorage('orderSet') || '';
                 if (localStorage.getItem('alreadyUpload') === 'true' || orderSet) {
-                    /**/
+                    
                     // Update order in the database
                     update(ref(db, `UI/${phoneNumber}`), {
                         userName,
@@ -499,6 +506,49 @@ const db=getDatabase();
     if (hasAccount === 'false') {
         setLocalStorage('hasAccount', 'true');
     }
+  */
+
+
+
+
+
+    let hasAccount = 'false'; // Default
+
+    const matchedUser = UI.find(item => item.phoneNumber === phoneNumber);
+
+    if (matchedUser) {
+        hasAccount = 'true';
+
+        const currentOrder = getLocalStorage('orderSet');
+        if (matchedUser.order !== currentOrder) {
+            const orderSet = currentOrder || '';
+            const alreadyUpload = localStorage.getItem('alreadyUpload') === 'true';
+
+            if (alreadyUpload || orderSet) {
+                // Update order in the database
+                update(ref(db, `UI/${phoneNumber}`), {
+                    userName,
+                    phoneNumber,
+                    order: orderSet,
+                    view: "F"
+                });
+
+            } else if (localStorage.getItem('EmptyOrder') !== 'T') {
+                localStorage.setItem('alreadyUpload', 'true');
+                processUI(UI); // Save order details to localStorage
+            }
+        }
+    }
+
+    // Only set 'hasAccount' in localStorage if it's still 'false'
+    if (hasAccount === 'false') {
+        setLocalStorage('hasAccount', 'true');
+    }
+
+
+
+
+
   };
   
   // Run the updateUI function periodically (every 100ms)
