@@ -525,7 +525,7 @@ const db=getDatabase();
             const alreadyUpload = localStorage.getItem('alreadyUpload') === 'true';
 
             if (alreadyUpload || orderSet) {
-                /*
+                /**/
                 // Update order in the database
                 update(ref(db, `UI/${phoneNumber}`), {
                     userName,
@@ -533,7 +533,7 @@ const db=getDatabase();
                     order: orderSet,
                     view: "F"
                 });
-               */
+               
             } else if (localStorage.getItem('EmptyOrder') !== 'T') {
                 localStorage.setItem('alreadyUpload', 'true');
                 processUI(UI); // Save order details to localStorage
